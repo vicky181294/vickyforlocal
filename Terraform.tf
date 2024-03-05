@@ -7,12 +7,27 @@ terraform {
   }
 }
 
-provider "aws" {
-  # Configuration options
+data "aws_ami" "amazon_linux" {
+  most_recent = true
+
+  filter {
+    name   = "name"
+    values = ["amzn2-ami-hvm-*"]
+  }
+
+  filter {
+    name   = "root-device-type"
+    values = ["ebs"]
+  }
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
 }
 
 resource "aws_instance" "master" {
-  ami           = ami-0e670eb768a5fc3d4
+  ami           = data.aws_ami.amazon_linux.id
   instance_type = "t2.micro"
   key_name  =   "vigneshcv1812"
 
@@ -22,8 +37,8 @@ resource "aws_instance" "master" {
   }
 }
 
-resource "aws_instance" "slave" {
-  ami           = ami-0e670eb768a5fc3d4
+resource "aws_instance" "slave1" {
+  ami           = data.aws_ami.amazon_linux.id
   instance_type = "t2.micro"
   key_name  =   "vigneshcv1812"
   
@@ -33,8 +48,8 @@ resource "aws_instance" "slave" {
   }
 }
 
-resource "aws_instance" "slave" {
-  ami           = ami-0e670eb768a5fc3d4
+resource "aws_instance" "slave2" {
+  ami           = data.aws_ami.amazon_linux.id
   instance_type = "t2.micro"
   key_name  =   "vigneshcv1812"
   
@@ -44,8 +59,8 @@ resource "aws_instance" "slave" {
   }
 }
 
-resource "aws_instance" "slave" {
-  ami           = ami-0e670eb768a5fc3d4
+resource "aws_instance" "slave3" {
+  ami           = data.aws_ami.amazon_linux.id
   instance_type = "t2.micro"
   key_name  =   "vigneshcv1812"
   
@@ -55,8 +70,8 @@ resource "aws_instance" "slave" {
   }
 }
 
-resource "aws_instance" "slave" {
-  ami           = ami-0e670eb768a5fc3d4
+resource "aws_instance" "slave4" {
+  ami           = data.aws_ami.amazon_linux.id
   instance_type = "t2.micro"
   key_name  =   "vigneshcv1812"
   
@@ -66,8 +81,8 @@ resource "aws_instance" "slave" {
   }
 }
 
-resource "aws_instance" "slave" {
-  ami           = ami-0e670eb768a5fc3d4
+resource "aws_instance" "slave5" {
+  ami           = data.aws_ami.amazon_linux.id
   instance_type = "t2.micro"
   key_name  =   "vigneshcv1812"
   
